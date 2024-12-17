@@ -54,7 +54,7 @@ const html = `
   </head>
   <body>
     <section>
-      I ate a bug
+      I ate a bug!
     </section>
   </body>
 </html>
