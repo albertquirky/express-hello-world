@@ -9,6 +9,7 @@ const server = app.listen(port, () => console.log('Example app listening on port
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
 
+/*
 var current = 0;
 var monsts = [];
 
@@ -94,6 +95,7 @@ async function submit() {
       }
 
 }
+*/
 const html = `
 <!doctype html>
 <html>  
@@ -137,11 +139,28 @@ div.Blank {
 <title>Sins!</title>
 </head>
 <script>
+
+function getMonster() {
+
+	const monst = {"Name":"Monster 1", "Sin": "Gluttony", "Element":"Earth", "Description":"this is the description?", "Abilities":"It's not very able"};
+ 	return monst;
+
+}
+
+
 function display() {
-
-	document.getElementById("ButtonSpace").innerHTML = "meow?";
-
- }
+	
+	const monst = getMonster();
+    
+	document.getElementById("Name").innerHTML="Name: " + monst["Name"];
+	document.getElementById("Type").innerHTML="Type: " + monst["Sin"] + "/" + monst["Element"];
+	document.getElementById("Description").innerHTML="Description: " + monst["Description"];
+	document.getElementById("Abilities").innerHTML="Abilities: " + monst["Abilities"];
+	
+	document.getElementById("inner").className = monst["Element"];
+    
+	
+}
 
  </script>
  
