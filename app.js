@@ -66,7 +66,9 @@ div.Blank {
 </div>
 </div>
 
-<script>
+</body>
+</html>
+`
 
 var current = 0;
 var monsts = [];
@@ -152,10 +154,4 @@ async function submit() {
 	  	  document.getElementById("ButtonSpace").innerHTML = json;	
       }
 
-	
 }
-</script>
-
-  </body>
-  </html>
-`
