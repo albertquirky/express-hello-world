@@ -178,7 +178,7 @@ const monsters = {
     	"Abilities":"Itch: If this attack hits, the enemy takes 1-5 damage, then 1-5 damage each turn the Ivy Leaguer passes their turn. It's a sort of \"auto-lock on\" mechanism, where they automatically hit the enemy on subsequent turns."
     }
   ]
-}
+};
 
 function getMonster() {
 
