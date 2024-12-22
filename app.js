@@ -9,67 +9,6 @@ const server = app.listen(port, () => console.log('Example app listening on port
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
 
-const html = `
-<!doctype html>
-<html>  
-<head>
-<style>
-div.outer {
-	margin:10em 20em;
-}
-div.box {
-	border:1px solid black;
-	color:white;
-}
-div#Name {
-	font-weight:bold;
-}
-div.Fire {
-	background:darkred;
-}
-div.Water {
-	background:blue;
-}
-div.Air {
-	background:yellow;
-}
-div.Earth {
-	background:orange;
-}
-div.Electricity {
-	background:indigo;
-}
-div.Biological {
-	background:green;
-}
-div.Mental {
-	background:violet;
-}
-div.Blank {
-	background:gray;
-}
-</style>
-<title>Sins!</title>
-</head>
-<body onload="display()">
-
-<div class="outer">
-<button onclick="next()" id="next">Next</button>
-<button onclick="preedit()" id="edit">Edit</button>
-<button onclick="newww()" id="new">New</button>
-<div id="inner">
-	<div id="Name" class="box"></div>
-	<div id="Type" class="box"></div>
-	<div id="Description" class="box"></div>
-	<div id="Abilities" class="box"></div>
-	<div id="ButtonSpace"></div>
-</div>
-</div>
-
-</body>
-</html>
-`
-
 var current = 0;
 var monsts = [];
 
@@ -155,3 +94,64 @@ async function submit() {
       }
 
 }
+const html = `
+<!doctype html>
+<html>  
+<head>
+<style>
+div.outer {
+	margin:10em 20em;
+}
+div.box {
+	border:1px solid black;
+	color:white;
+}
+div#Name {
+	font-weight:bold;
+}
+div.Fire {
+	background:darkred;
+}
+div.Water {
+	background:blue;
+}
+div.Air {
+	background:yellow;
+}
+div.Earth {
+	background:orange;
+}
+div.Electricity {
+	background:indigo;
+}
+div.Biological {
+	background:green;
+}
+div.Mental {
+	background:violet;
+}
+div.Blank {
+	background:gray;
+}
+</style>
+<title>Sins!</title>
+</head>
+<body onload="display()">
+
+<div class="outer">
+<button onclick="next()" id="next">Next</button>
+<button onclick="preedit()" id="edit">Edit</button>
+<button onclick="newww()" id="new">New</button>
+<div id="inner">
+	<div id="Name" class="box"></div>
+	<div id="Type" class="box"></div>
+	<div id="Description" class="box"></div>
+	<div id="Abilities" class="box"></div>
+	<div id="ButtonSpace"></div>
+</div>
+</div>
+
+</body>
+</html>
+`
+
