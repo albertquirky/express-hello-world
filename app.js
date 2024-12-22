@@ -190,6 +190,8 @@ function getMonster() {
 function display() {
 	
 	const monst = getMonster();
+
+ 	console.log(monst);
     
 	document.getElementById("Name").innerHTML="Name: " + monst["Name"];
 	document.getElementById("Type").innerHTML="Type: " + monst["Sin"] + "/" + monst["Element"];
