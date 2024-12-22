@@ -142,6 +142,8 @@ function display() {
 	document.getElementById("ButtonSpace".innerHTML = "meow?";
 
  }
+
+ </script>
  
 <body onload="display()">
 
