@@ -136,6 +136,13 @@ div.Blank {
 </style>
 <title>Sins!</title>
 </head>
+<script>
+function display() {
+
+	document.getElementById("ButtonSpace".innerHTML = "meow?";
+
+ }
+ 
 <body onload="display()">
 
 <div class="outer">
