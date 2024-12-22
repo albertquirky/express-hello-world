@@ -139,7 +139,7 @@ div.Blank {
 <script>
 function display() {
 
-	document.getElementById("ButtonSpace".innerHTML = "meow?";
+	document.getElementById("ButtonSpace").innerHTML = "meow?";
 
  }
 
