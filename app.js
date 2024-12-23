@@ -12,7 +12,4 @@ server.headersTimeout = 120 * 1000;
 
 const fs = require('node:fs');
 
-fs.readFile('index2.html', 'utf8', (err, data) => {
-  
-  
-});
+//fs.readFile('index2.html', 'utf8', (err, data) => {});
