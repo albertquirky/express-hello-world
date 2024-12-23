@@ -21,4 +21,4 @@ fs.readFile('index2.html', 'utf8', (err, data) => {
 });
 
 
-const html = fs;
+const html = data;
