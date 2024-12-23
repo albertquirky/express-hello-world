@@ -98,7 +98,9 @@ function newww() {
 }
 
 function getMonst() {
-	
+	const fs = require('node:fs');
+
+	fs.readFile('data.json', 'utf8', (err, data) => { console.log(data); });
 	return monsters["Sins"][current % monsters["Sins"].length];
 	
 }
