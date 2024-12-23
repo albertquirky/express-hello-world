@@ -14,7 +14,7 @@ const fs = require('node:fs');
 fs.readFile('index2.html', 'utf8', (err, data) => { 
   
   
-  app.get("/", data); //(req, res) => res.type('html').send("BOO!!!"+data));
+  app.get("/", (req, res) => res.type('html').send(data));
 
 
 });
