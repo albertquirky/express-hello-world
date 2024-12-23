@@ -10,10 +10,6 @@ server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
 
 
-
-
-const html = `
-<script>
 const fs = require('node:fs');
 
 fs.readFile('index2.html', 'utf8', (err, data) => {
@@ -23,5 +19,6 @@ fs.readFile('index2.html', 'utf8', (err, data) => {
   }
   console.log(data);
 });
-</script>
-`
+
+
+const html = fs;
