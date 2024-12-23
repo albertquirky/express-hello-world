@@ -9,7 +9,7 @@ const server = app.listen(port, () => console.log('Example app listening on port
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
 
-const html = "hi";
-//const fs = require('node:fs');
+var html = "hi";
+const fs = require('node:fs');
 
-//fs.readFile('index2.html', 'utf8', (err, data) => {});
+fs.readFile('index2.html', 'utf8', (err, data) => {});
