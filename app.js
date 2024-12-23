@@ -14,5 +14,5 @@ const fs = require('node:fs');
 
 fs.readFile('index2.html', 'utf8', (err, data) => {
   
-  }
+  
 });
