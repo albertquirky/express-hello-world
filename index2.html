@@ -144,7 +144,9 @@ function next() {
  </script>
  
 <body onload="display()">
-
+<form id="tester" method=POST" action="app.js">
+	<input type="hidden" name="tester" value="TESTING!!!!">
+</form>
 <div class="outer">
 <button onclick="next()" id="next">Next</button>
 <button onclick="edit()" id="edit">Edit</button>
