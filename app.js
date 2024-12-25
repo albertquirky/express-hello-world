@@ -20,5 +20,5 @@ fs.readFile('index2.html', 'utf8', (err, data) => {
 });
 
 app.post('/', (req, res) => {
-  res.send(req.params[0])
+  res.send(req.params["tester"])
 });
