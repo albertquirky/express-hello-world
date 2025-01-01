@@ -43,7 +43,7 @@ app.post('/', (req, res) => {
 	  else {  		  
 			  d["Sins"].unshift(req.body);
 	  }
-	  fs.writeFile(jsonfile, JSON.stringify(d), (error)=>{});
+	  fs.writeFile(jsonfile, JSON.stringify(d), (error)=>{ console.log(error); });
 	  console.log("wrote to " + jsonfile + ": " +JSON.stringify(d));
 	  loadPage(res);
 	  });
