@@ -54,7 +54,7 @@ function loadPage(res) {
 	
 	fs.readFile(jsonfile, 'utf8', (err, monsterData) => {
 			
-		fs.readFile('index2.html', 'utf8', (err, pageData) => {
+		fs.readFile('index.html', 'utf8', (err, pageData) => {
 				
 			if (!monsterData) {
 				console.log("AAAAAAAAA!!!");
