@@ -1,0 +1,155 @@
+<!doctype html>
+<html>  
+<head>
+<style>
+body {
+	background:black;
+}
+div.outer {
+	margin:10em 20em;
+}
+div.box {
+	border:1px solid black;
+	color:white;
+}
+div#Name {
+	font-weight:bold;
+}
+div.Fire {
+	background:darkred;
+}
+div.Water {
+	background:blue;
+}
+div.Air {
+	background:#8B8000;
+}
+div.Earth {
+	background:orange;
+}
+div.Electricity {
+	background:indigo;
+}
+div.Biological {
+	background:green;
+}
+div.Mental {
+	background:violet;
+}
+div.Blank {
+	background:gray;
+}
+div.Deleter {
+	color:black;
+	background:darkgray;
+}
+div.Question {
+	font-weight:bold;
+	background:black;
+	color:red;
+}
+</style>
+<title>Sins!</title>
+</head>
+<script>
+
+var current = 0;
+
+const monsters = {*};
+
+function newww() {
+	
+	const sinselect = "<select name='Sin' id='SinSelect'><option value='Sloth'>Sloth</option><option value='Envy'>Envy</option><option value='Wrath'>Wrath</option><option value='Lust'>Lust</option><option value='Pride'>Pride</option><option value='Gluttony'>Gluttony</option><option value='Greed'>Greed</option></select>";
+	const elementselect = "<select name='Element' id='ElementSelect'><option value='Earth'>Earth</option><option value='Water'>Water</option><option value='Fire'>Fire</option><option value='Air'>Air</option><option value='Mental'>Mental</option><option value='Biological'>Biological</option><option value='Electricity'>Electricity</option></select>";
+	
+	document.getElementById("Name").innerHTML="Name: <input name='Name'id='NameInput'></input>";
+	document.getElementById("Type").innerHTML="Type: "+sinselect+elementselect;
+	document.getElementById("Description").innerHTML="Description: <textarea name='Description' id='DescriptionInput' rows='4' cols='100'></textarea>";
+	document.getElementById("Abilities").innerHTML="Abilities: <textarea name='Abilities' id='AbilitiesInput' rows='4' cols='100'></textarea>";
+	
+	document.getElementById("inner").className = "Blank";
+	
+	document.getElementById("ButtonSpace").innerHTML = "<input type='submit' value='Save'></input><button onclick='display()'>Cancel</button>";
+	
+	document.getElementById("topbuttons").innerHTML="";
+}
+
+function getMonst() {
+	
+	return monsters["Sins"][current % monsters["Sins"].length];
+	
+}
+
+function edit() {
+	
+	newww();
+	
+	const monst = getMonst();
+	
+	document.getElementById("Name").innerHTML="<input type='hidden' name='Name' value='"+monst["Name"]+"'>Name: "+monst["Name"];
+	document.getElementById("SinSelect").value=monst["Sin"];
+	document.getElementById("ElementSelect").value=monst["Element"];
+	document.getElementById("DescriptionInput").value=monst["Description"];
+	document.getElementById("AbilitiesInput").value=monst["Abilities"];
+	
+	document.getElementById("ButtonSpace").innerHTML += "<input type='hidden' name='editing'>";
+	document.getElementById("DeleteButton").innerHTML="<button onclick='deleter()' id='delete'>Delete</button>";
+}
+
+function deleter() {
+	
+	const monst = getMonst();
+	
+	display();
+	document.getElementById("inner").className="Deleter";
+	document.getElementById("topbuttons").innerHTML="";
+	document.getElementById("DeleteButton").innerHTML="";
+	document.getElementById("ButtonSpace").className="Question";
+	document.getElementById("ButtonSpace").innerHTML = "Delete this? <button name='DeleteYes' value='"+monst["Name"]+"'>Yes</button><button type='button' onclick='display()'>No</button>";
+	
+}
+
+function display() {
+	
+	const monst = getMonst();
+    
+	document.getElementById("topbuttons").innerHTML='<button onclick="next()" id="next">Next</button><button onclick="edit()" id="edit">Edit</button><button onclick="newww()" id="new">New</button>';
+
+	document.getElementById("Name").innerHTML="Name: " + monst["Name"];
+	document.getElementById("Type").innerHTML="Type: " + monst["Sin"] + "/" + monst["Element"];
+	document.getElementById("Description").innerHTML="Description: " + monst["Description"];
+	document.getElementById("Abilities").innerHTML="Abilities: " + monst["Abilities"];
+	document.getElementById("ButtonSpace").innerHTML="";
+	document.getElementById("DeleteButton").innerHTML="";
+	
+	document.getElementById("inner").className = monst["Element"];
+    
+	
+}
+
+function next() {
+
+	current++;
+	display();
+	
+}
+ </script>
+ 
+<body onload="display()">
+
+<div class="outer" id="outer">
+<span id="topbuttons"></span>
+<div id="inner">
+	<form action='/' method='post' id='newForm'>
+	<div id="Name" class="box"></div>
+	<div id="Type" class="box"></div>
+	<div id="Description" class="box"></div>
+	<div id="Abilities" class="box"></div>
+	<div id="ButtonSpace"></div>
+	</form>
+	<div id="DeleteButton"></div>
+</div>
+</div>
+
+</body>
+</html>
