@@ -12,9 +12,9 @@ const server = app.listen(port, () => console.log('Example app listening on port
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
 
-fs.readFile('canvas.html', 'utf8', (err, pageData)) => {
+fs.readFile('canvas.html', 'utf8', (err, pageData) => {
 	app.get("/", (req, res) => res.type('html').send(pageData));
-}
+});
 
 app.use(express.urlencoded({ extended: true }));
 
