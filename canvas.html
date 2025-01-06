@@ -1,0 +1,99 @@
+<!doctype html>
+<head>
+<title>I can't stop farting!!!</title>
+
+<style>
+.thecanvas{
+	border: 2px solid red;
+}
+</style>
+</head>
+<body onload="drawGuy()" onkeydown="getKey(event)">
+<canvas width=640 height=640 id="thecanvas" class="thecanvas">
+hi
+</canvas>
+<script>
+const canvas = document.getElementById("thecanvas");
+const ctx = canvas.getContext("2d");
+var coords = {"x": 0, "y":0};
+/*
+ctx.fillStyle = "black";
+ctx.fillRect(0, 0, 300, 300);
+ctx.fillStyle="rgb(0 255 0)";
+ctx.fillRect(50,50,50,50);
+ctx.strokeStyle = "rgb(255 255 0)";
+ctx.lineWidth = 5;
+ctx.strokeRect(25, 25, 175, 200);
+
+ctx.fillStyle = "rgb(0 0 0)";
+ctx.beginPath();
+ctx.moveTo(50, 50);
+ctx.lineTo(150, 50);
+const triHeight = 50 * Math.tan(degToRad(60));
+ctx.lineTo(100, 50 + triHeight);
+ctx.lineTo(50, 50);
+ctx.fill();
+
+ctx.fillStyle = "rgb(0 0 255)";
+ctx.beginPath();
+ctx.arc(150, 106, 50, degToRad(0), degToRad(360), false);
+ctx.fill();
+
+ctx.fillStyle = "yellow";
+ctx.beginPath();
+ctx.arc(200, 106, 50, degToRad(-45), degToRad(45), true);
+ctx.lineTo(200, 106);
+ctx.fill();
+
+ctx.strokeStyle = "white";
+ctx.lineWidth = 1;
+ctx.font = "36px arial";
+ctx.strokeText("Canvas text", 50, 50);
+
+ctx.fillStyle = "red";
+ctx.font = "48px georgia";
+ctx.fillText("Canvas text", 50, 150);
+
+canvas.setAttribute("aria-label", "Canvas text");
+*/
+
+
+function drawGuy() {
+	const image = new Image();
+	image.src = "sprite.png";
+	image.addEventListener("load", () => ctx.drawImage(image, coords["x"], coords["y"]));
+}
+
+function getKey(event) {
+	
+	switch (event.key) {
+	case "ArrowUp": 
+		coords["y"]-=5;
+		break;
+	case "ArrowDown":
+		coords["y"]+=5;
+		break;
+	case "ArrowLeft":
+		coords["x"]-=5;
+		break;
+	case "ArrowRight":
+		coords["x"]+=5;
+		break;
+	}
+	
+	drawGuy();		
+		
+}
+
+
+
+
+function degToRad(degrees) {
+  return (degrees * Math.PI) / 180;
+}
+
+
+
+</script>
+</body>
+</html>
