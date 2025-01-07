@@ -1,68 +1,117 @@
 <!doctype html>
 <head>
-<title>I can't stop farting!!!</title>
+<title>Do Re Monsters</title>
 
 <style>
 .thecanvas{
-	border: 2px solid red;
+	float:left;
+}
+.info {
+	float:left;
+	margin:1em;
+}
+.displayMonster {
+	float:left;
+}
+.data {
+	padding:1em;
+}
+a {
+	color:blue;
+}
+a:hover {
+	text-decoration:underline;
 }
 </style>
 </head>
-<body onload="drawGuy()" onkeydown="getKey(event)">
+<body onload="draw()" onkeydown="getKey(event)">
+<div class="clearfix">
 <canvas width=640 height=640 id="thecanvas" class="thecanvas">
 hi
 </canvas>
+<div id="info">Monsters caught:<br/><i>none</i></div>
+<div id="displayMonster"></div>
+</div>
+<div id="data"></div>
 <script>
+
+
+const monsterData = {*};
+
+const urls = [ "https://i.ibb.co/vX0Vygv/1.png", "https://i.ibb.co/MVGpV50/2.png", "https://i.ibb.co/nnt4xrz/3.png", "https://i.ibb.co/jk3sJSj/4.png", "https://i.ibb.co/RbHyqPK/5.png", "https://i.ibb.co/8DCPpkc/6.png" ];
+
 const canvas = document.getElementById("thecanvas");
 const ctx = canvas.getContext("2d");
 var coords = {"x": 0, "y":0};
-/*
-ctx.fillStyle = "black";
-ctx.fillRect(0, 0, 300, 300);
-ctx.fillStyle="rgb(0 255 0)";
-ctx.fillRect(50,50,50,50);
-ctx.strokeStyle = "rgb(255 255 0)";
-ctx.lineWidth = 5;
-ctx.strokeRect(25, 25, 175, 200);
 
-ctx.fillStyle = "rgb(0 0 0)";
-ctx.beginPath();
-ctx.moveTo(50, 50);
-ctx.lineTo(150, 50);
-const triHeight = 50 * Math.tan(degToRad(60));
-ctx.lineTo(100, 50 + triHeight);
-ctx.lineTo(50, 50);
-ctx.fill();
+const guyimg = new Image();
+guyimg.src = "https://i.ibb.co/17QLjZ3/guy.png";
 
-ctx.fillStyle = "rgb(0 0 255)";
-ctx.beginPath();
-ctx.arc(150, 106, 50, degToRad(0), degToRad(360), false);
-ctx.fill();
-
-ctx.fillStyle = "yellow";
-ctx.beginPath();
-ctx.arc(200, 106, 50, degToRad(-45), degToRad(45), true);
-ctx.lineTo(200, 106);
-ctx.fill();
-
-ctx.strokeStyle = "white";
-ctx.lineWidth = 1;
-ctx.font = "36px arial";
-ctx.strokeText("Canvas text", 50, 50);
-
-ctx.fillStyle = "red";
-ctx.font = "48px georgia";
-ctx.fillText("Canvas text", 50, 150);
-
-canvas.setAttribute("aria-label", "Canvas text");
-*/
-
-
-function drawGuy() {
-	const image = new Image();
-	image.src = "https://i.ibb.co/nRzfd0x/sprite.png";
-	image.addEventListener("load", () => ctx.drawImage(image, coords["x"], coords["y"]));
+class Monster {
+	
+	img = new Image();
+	x = 200+rnd();
+	y = 100+rnd();
+	got = false;
+	
+	constructor(id) {
+		this.id = id+1;
+		this.img.src = urls[this.id];
+		this.monst = monsterData["Sins"][id];
+	}
+	checkNear() {
+		if (!this.got) {
+			let g = { "left":coords.x, "right":coords.x+guyimg.width, "top":coords.y, "bottom":coords.y+guyimg.height };	
+			let m = { "left":this.x, "right":this.x+this.img.width, "top": this.y, "bottom":this.y+this.img.height };
+			if (g.right > m.left && g.bottom > m.top &&	g.left < m.right && g.top < m.bottom) { 
+				ctx.fillStyle = "red";
+				ctx.fillText("You got "+this.monst["name"]+"!", 10, 10);
+				caught.push(this);
+				this.got = true;
+				showCaught();
+			}
+		}
+	}
 }
+
+const slimes = [];
+for (let i = 0; i < 5; i++) slimes.push(new Monster(i));
+const caught = [];
+
+function showCaught() {
+	
+	let text = "Monsters caught:";
+	let cot = false;
+	for (let c of caught) {
+		text += "<br/><a onclick='displayMonster("+c.id+")'>"+c.monst["Name"]+"</a>";
+		cot = true;
+	}
+	if (!cot) text += "<br /><i>None!</i>";
+	document.getElementById("info").innerHTML = text;
+	
+}
+
+function displayMonster(which) {
+
+	const monst = monsterData["Sins"][which-1];
+	let text = "Monster info:";
+	for (k in monst) {
+		text += "<br/><b>"+k+":</b> "+monst[k];
+	}
+	document.getElementById("displayMonster").innerHTML = text;
+	
+}
+function draw() {	
+	ctx.fillStyle = "black";
+	ctx.fillRect(0, 0, 640, 640);
+	ctx.drawImage(guyimg, coords["x"], coords["y"]);
+	for (let s of slimes) {
+		if (!s.got) ctx.drawImage(s.img, s.x, s.y);
+	}
+}
+
+
+function rnd() { return Math.floor(Math.random() * 300); }
 
 function getKey(event) {
 	
@@ -81,18 +130,11 @@ function getKey(event) {
 		break;
 	}
 	
-	drawGuy();		
-		
+	for (let s of slimes) {
+		s.checkNear();
+	}
+	draw();		
 }
-
-
-
-
-function degToRad(degrees) {
-  return (degrees * Math.PI) / 180;
-}
-
-
 
 </script>
 </body>
