@@ -1,25 +1,21 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 10000;
+const port = process.env.PORT || 3001;
 const util = require('util'); 
   
 const fs = require('node:fs');
 
-const jsonfile ="data.json";
+const jsonfile ="data - Copy.json";
 
 const server = app.listen(port, () => console.log('Example app listening on port '+port));
 
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
 
-fs.readFile('canvas.html', 'utf8', (err, pageData) => {
-	app.get("/", (req, res) => res.type('html').send(pageData));
-});
+app.get("/", (req, res) => loadPage(res));
 
 app.use(express.urlencoded({ extended: true }));
 
-
-/*
 app.post('/', (req, res) => {
 		
   console.log('Received POST data:', req.body);
@@ -47,7 +43,7 @@ app.post('/', (req, res) => {
 	  else {  		  
 			  d["Sins"].unshift(req.body);
 	  }
-	  fs.writeFile(jsonfile, JSON.stringify(d), (error)=>{ console.log(error); });
+	  fs.writeFile(jsonfile, JSON.stringify(d), (error)=>{});
 	  console.log("wrote to " + jsonfile + ": " +JSON.stringify(d));
 	  loadPage(res);
 	  });
@@ -58,7 +54,7 @@ function loadPage(res) {
 	
 	fs.readFile(jsonfile, 'utf8', (err, monsterData) => {
 			
-		fs.readFile('index.html', 'utf8', (err, pageData) => {
+		fs.readFile('canvas.html', 'utf8', (err, pageData) => {
 				
 			if (!monsterData) {
 				console.log("AAAAAAAAA!!!");
@@ -71,4 +67,3 @@ function loadPage(res) {
 	});	
 
 }
-*/
