@@ -5,7 +5,7 @@ const util = require('util');
   
 const fs = require('node:fs');
 
-const jsonfile ="data - Copy.json";
+const jsonfile ="data.json";
 
 const server = app.listen(port, () => console.log('Example app listening on port '+port));
 
@@ -57,7 +57,7 @@ function loadPage(res) {
 		fs.readFile('canvas.html', 'utf8', (err, pageData) => {
 				
 			if (!monsterData) {
-				console.log("AAAAAAAAA!!!");
+				console.log("Data failed to load!!");
 				loadPage(res);				
 			}
 			else res.type('html').send(pageData.replace("{*}", monsterData));
